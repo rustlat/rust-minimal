@@ -6,3 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+poem = { version = "3.0.0", features = ["cookie", "static-files"] }
+poem-openapi = { version = "5.0.0", features = ["swagger-ui"] }
+tokio = { version = "1.17.0", features = ["macros", "rt-multi-thread"] }

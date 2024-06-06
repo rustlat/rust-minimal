@@ -1,5 +1,5 @@
 [workspace]
-members = ["crates/quadrant", "crates/openapi"]
+members = ["crates/quadrant", "crates/async-openai", "crates/openapi"]
 resolver = "2"
 
 [workspace.dependencies]
