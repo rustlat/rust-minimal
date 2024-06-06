@@ -12,9 +12,17 @@ enum Quadrant {
     Center,
 }
 
+fn num_sign(x: f32) -> i32 {
+    if x != 0.0 {
+        x.signum() as i32
+    } else {
+        0
+    }
+}
+
 impl Point {
     fn get_quad(self) -> Quadrant {
-        match (self.x.signum() as i32, self.y.signum() as i32) {
+        match (num_sign(self.x), num_sign(self.y)) {
             (1, 1) => Quadrant::I,
             (-1, 1) => Quadrant::II,
             (-1, -1) => Quadrant::III,
