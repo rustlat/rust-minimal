@@ -1,35 +1,37 @@
 use std::error::Error;
 
 use async_openai::{
+    config::OpenAIConfig,
     types::{
-        ChatCompletionRequestAssistantMessageArgs, ChatCompletionRequestSystemMessageArgs,
-        ChatCompletionRequestUserMessageArgs, CreateChatCompletionRequestArgs,
+        ChatCompletionRequestSystemMessageArgs, ChatCompletionRequestUserMessageArgs,
+        CreateChatCompletionRequestArgs,
     },
     Client,
 };
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let client = Client::new();
+    dotenv::dotenv().ok();
+
+    let secret_key = std::env::var("OPENAI_API_KEY").unwrap();
+    let model_name = std::env::var("OPENAI_MODEL_NAME").unwrap();
+
+    let config = OpenAIConfig::default()
+        .with_api_base("https://openrouter.ai/api/v1")
+        .with_api_key(secret_key);
+
+    let client = Client::with_config(config);
 
     let request = CreateChatCompletionRequestArgs::default()
-        .max_tokens(512u16)
-        .model("gpt-3.5-turbo")
+        .max_tokens(1024u16)
+        .model(model_name)
         .messages([
             ChatCompletionRequestSystemMessageArgs::default()
                 .content("You are a helpful assistant.")
                 .build()?
                 .into(),
             ChatCompletionRequestUserMessageArgs::default()
-                .content("Who won the world series in 2020?")
-                .build()?
-                .into(),
-            ChatCompletionRequestAssistantMessageArgs::default()
-                .content("The Los Angeles Dodgers won the World Series in 2020.")
-                .build()?
-                .into(),
-            ChatCompletionRequestUserMessageArgs::default()
-                .content("Where was it played?")
+                .content("Hello there!")
                 .build()?
                 .into(),
         ])

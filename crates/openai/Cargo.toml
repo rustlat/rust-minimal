@@ -1,5 +1,5 @@
 [package]
-name = "async-openai"
+name = "openai"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,5 +7,6 @@ edition = "2021"
 
 [dependencies]
 async-openai = "0.23.0"
+dotenv = "0.15.0"
 serde_json = "1.0.117"
 tokio = { version = "1.38.0", features = ["full"] }
