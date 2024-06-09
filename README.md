@@ -7,8 +7,8 @@ El repositorio está estructurado en los siguientes `crates`:
 - opeanapi: Hola Mundo en un Web Server
 - openai: Integración de un LLM con Rust
 
-## Indicaciones generales para correr un `crate`
-Mediante línea de comando ubicarse en el directorio raiz, luego seguir las siguientes instrucciones para cada crate.
+## Indicaciones generales para ejecutar un `crate`
+Mediante la interfaz de línea de comandos ubicarse en el directorio raiz, luego seguir las siguientes instrucciones para cada crate.
 
 ### Quadrant
 
@@ -31,6 +31,8 @@ Crear un archivo `.env` que contenga las siguientes variables de entorno:
 OPENAI_API_KEY=<api-key>
 OPENAI_MODEL_NAME=<llm-model-name>
 ```
+
+Finalmente, ejecutar el crate de manera similar a los casos anteriores.
 
 ## Additional Resources:
 - [Rust Language Cheat Sheet](https://cheats.rs/)
